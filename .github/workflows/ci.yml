@@ -45,7 +45,7 @@ jobs:
         verbose: true
         
     - name: Upload test results as artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results
@@ -71,7 +71,7 @@ jobs:
       run: dotnet run --project tests/Conduit.Benchmark/Conduit.Benchmark.csproj -c Release
       
     - name: Upload benchmark results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: benchmark-results
