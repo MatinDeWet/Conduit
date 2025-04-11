@@ -16,7 +16,7 @@
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
 
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/yourusername/conduit</RepositoryUrl>
+    <RepositoryUrl>https://github.com/MatinDeWet/Conduit</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
