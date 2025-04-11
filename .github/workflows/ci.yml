@@ -7,6 +7,12 @@ on:
     branches: [ master, develop ]
   workflow_dispatch:
 
+
+# Add this permissions block at the top level
+permissions:
+  contents: read
+  checks: write    # Required for test reporter to create check runs
+
 jobs:
   build:
     runs-on: ubuntu-latest
