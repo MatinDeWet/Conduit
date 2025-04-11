@@ -4,6 +4,25 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- NuGet Package Information -->
+    <PackageId>MatinDeWet.Conduit</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>MatinDeWet</Authors>
+    <Description>A mediator pattern implementation for .NET applications</Description>
+    <PackageTags>mediator;cqrs;handler;request;pipeline;notification</PackageTags>
+
+    <!-- GPL-3.0 License -->
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/yourusername/conduit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- Required for GPL compliance -->
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright © $(Authors) $([System.DateTime]::Now.Year)</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,8 +34,14 @@
     <ProjectReference Include="..\Conduit.Contract\Conduit.Contract.csproj" />
   </ItemGroup>
 
-    <ItemGroup>
-	    <InternalsVisibleTo Include="Conduit.UnitTest" />
-    </ItemGroup>
+  <ItemGroup>
+	  <InternalsVisibleTo Include="Conduit.UnitTest" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <None Include="../../README.md" Pack="true" PackagePath="/" />
+      <None Include="../../icon.png" Pack="true" PackagePath="/" Condition="Exists('../../icon.png')" />
+      <None Include="../../LICENSE.txt" Pack="true" PackagePath="/" />
+  </ItemGroup>
 
 </Project>
