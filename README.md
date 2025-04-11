@@ -1,6 +1,6 @@
 # Conduit
 
-A lightweight, high-performance mediator pattern implementation for .NET applications.
+A mediator pattern implementation for .NET applications.
 
 ## Overview
 
