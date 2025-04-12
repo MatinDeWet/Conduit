@@ -1,5 +1,4 @@
 using Conduit.Behaviors;
-using Conduit.Contract.Delegates;
 using Conduit.Contract.Requests;
 using Shouldly;
 using System.Reflection;
