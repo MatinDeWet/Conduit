@@ -1,5 +1,9 @@
 # Conduit
 
+[![NuGet Version](https://img.shields.io/nuget/v/MatinDeWet.Conduit)](https://www.nuget.org/packages/MatinDeWet.Conduit/) 
+[![NuGet Version](https://img.shields.io/nuget/v/MatinDeWet.Conduit.Contract)](https://www.nuget.org/packages/MatinDeWet.Conduit.Contract/) 
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/MatinDeWet/Conduit/ci.yml)](https://github.com/MatinDeWet/Conduit)
+
 A mediator pattern implementation for .NET applications.
 
 ## Overview
