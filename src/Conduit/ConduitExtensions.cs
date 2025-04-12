@@ -9,8 +9,17 @@ using System.Reflection;
 
 namespace Conduit;
 
+/// <summary>
+/// Provides extension methods for configuring Conduit services in an <see cref="IServiceCollection"/>.
+/// </summary>
 public static class ConduitExtensions
 {
+    /// <summary>
+    /// Adds Conduit services, including request and notification dispatchers, handlers, and pipeline behaviors, to the service collection.
+    /// </summary>
+    /// <param name="services">The service collection to which Conduit services will be added.</param>
+    /// <param name="configAction">An action to configure the <see cref="ConduitServiceConfiguration"/>.</param>
+    /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddConduit(this IServiceCollection services, Action<ConduitServiceConfiguration> configAction)
     {
         var configuration = new ConduitServiceConfiguration();
@@ -25,7 +34,6 @@ public static class ConduitExtensions
         foreach (var assembly in configuration.AssembliesToRegister)
         {
             services.AddHandlersFromAssembly(assembly, configuration.HandlerLifetime);
-            //services.AddPipelineBehaviorsFromAssembly(assembly, configuration.PipelineLifetime);
         }
 
         foreach (var behavior in configuration.RequestPipelineBehaviors)
@@ -41,23 +49,27 @@ public static class ConduitExtensions
         return services;
     }
 
+    /// <summary>
+    /// Registers all handlers (request and notification) from the specified assembly into the service collection.
+    /// </summary>
+    /// <param name="services">The service collection to which handlers will be added.</param>
+    /// <param name="assembly">The assembly from which handlers will be registered.</param>
+    /// <param name="serviceLifetime">The lifetime of the registered handlers.</param>
+    /// <returns>The updated <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddHandlersFromAssembly(this IServiceCollection services, Assembly assembly, ServiceLifetime serviceLifetime)
     {
-        // Register request handlers without response
         services.Scan(scan => scan
             .FromAssemblies(assembly)
             .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<>)))
             .AsImplementedInterfaces()
             .WithLifetime(serviceLifetime));
 
-        // Register request handlers with response
         services.Scan(scan => scan
             .FromAssemblies(assembly)
             .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
             .AsImplementedInterfaces()
             .WithLifetime(serviceLifetime));
 
-        // Register notification handlers
         services.Scan(scan => scan
             .FromAssemblies(assembly)
             .AddClasses(classes => classes.AssignableTo(typeof(INotificationHandler<>)))
@@ -66,23 +78,4 @@ public static class ConduitExtensions
 
         return services;
     }
-
-    //public static IServiceCollection AddPipelineBehaviorsFromAssembly(this IServiceCollection services, Assembly assembly, ServiceLifetime serviceLifetime)
-    //{
-    //    // Register request pipeline behaviors
-    //    services.Scan(scan => scan
-    //        .FromAssemblies(assembly)
-    //        .AddClasses(classes => classes.AssignableTo(typeof(IPipelineBehavior<,>)))
-    //        .AsImplementedInterfaces()
-    //        .WithLifetime(serviceLifetime));
-
-    //    // Register notification pipeline behaviors
-    //    services.Scan(scan => scan
-    //        .FromAssemblies(assembly)
-    //        .AddClasses(classes => classes.AssignableTo(typeof(INotificationPipelineBehavior<>)))
-    //        .AsImplementedInterfaces()
-    //        .WithLifetime(serviceLifetime));
-
-    //    return services;
-    //}
 }
