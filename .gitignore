@@ -238,3 +238,6 @@ ClientBin/
 *.jfm
 *.pfx
 *.publishsettings
+
+# macOS
+.DS_Store
