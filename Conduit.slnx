@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Conduit.Domain/Conduit.Domain.csproj" />
+  <Project Path="Conduit.UnitTests/Conduit.UnitTests.csproj" />
+  <Project Path="Conduit/Conduit.csproj" />
+</Solution>
