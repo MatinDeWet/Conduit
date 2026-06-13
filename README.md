@@ -143,6 +143,3 @@ Conduit queues domain events and processes them in the background through its ho
 - Domain events are dispatched asynchronously through the built-in queue and background processor.
 - `TryDecorateIfImplementationsExist(...)` is available when you want to apply decorators only if matching handlers are registered.
 
-## Repository
-
-https://github.com/MatinDeWet/Conduit
